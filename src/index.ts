@@ -14,9 +14,9 @@ app.use(cors());
 app.use(morgan('dev'));
 
 // SINCRONIZACION CON LA BASE DE DATOS
-sequelize.sync({ force: false })
+sequelize.sync({ force: true })
   .then(() => {
-    
+    console.log("database sincronizada con exito")
   })
   .catch((err) => {
     console.error('Error al sincronizar modelos con la base de datos:', err);
