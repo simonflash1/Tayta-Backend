@@ -16,7 +16,7 @@ export const getUserByName = async (name: string): Promise<IUser[]> => {
   try {
     const users = await User.findAll({
       where: {
-        nombreMunicipio: name,
+        nombres: name,
       },
     });
     return users;
