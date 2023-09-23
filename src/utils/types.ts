@@ -16,7 +16,7 @@ export enum rolUsuario {
 }
 
 export interface IUser {
-  id?: string;
+  id?: number;
   rol: rolUsuario;
   idPais: number;
   idDepartamento?: number;

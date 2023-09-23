@@ -1,16 +1,23 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../db';
-import { IUser } from '../utils/types';
+import { IUser, rolUsuario } from '../utils/types';
 
 class User extends Model<IUser> implements IUser {
     public id!: number;
-    public rol!: 'admin' | 'municipalidad';
+    public rol!: rolUsuario;
+    public idPais!: number;
+    public idDepartamento?: number;
+    public idMunicipalidad?: number;
+    public email?: string;
+    public nombreEntidad?: string;
     public username!: string;
     public password!: string;
-    public nombreMunicipio!: string;
-    public departamento!: string;
-    public provincia!: string;
-    public distrito!: string;
+    public nombres?: string;
+    public apellidoPaterno?: string;
+    public apellidoMaterno?: string;
+    public dni?: string;
+    public domicilio?: string;
+    public telefono?: string;
 
     public verifyPassword(passwordToCheck: string): boolean {
         return this.password === passwordToCheck;
@@ -28,6 +35,22 @@ User.init(
             type: DataTypes.ENUM('admin', 'municipalidad'),
             allowNull: false,
         },
+        idPais: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        idDepartamento: {
+            type: DataTypes.INTEGER,
+        },
+        idMunicipalidad: {
+            type: DataTypes.INTEGER,
+        },
+        email: {
+            type: DataTypes.STRING,
+        },
+        nombreEntidad: {
+            type: DataTypes.STRING,
+        },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -36,21 +59,23 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        nombreMunicipio: {
+        nombres: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
-        departamento: {
+        apellidoPaterno: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
-        provincia: {
+        apellidoMaterno: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
-        distrito: {
+        dni: {
             type: DataTypes.STRING,
-            allowNull: false,
+        },
+        domicilio: {
+            type: DataTypes.STRING,
+        },
+        telefono: {
+            type: DataTypes.STRING,
         },
     },
     {
