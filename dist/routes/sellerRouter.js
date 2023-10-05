@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const sellerHandler_1 = require("../handlers/sellerHandler");
+const sellerRouter = (0, express_1.Router)();
+sellerRouter.get("/", sellerHandler_1.getSellerByNameHandler);
+sellerRouter.get("/all", sellerHandler_1.getAllSellersHandler);
+sellerRouter.get("/:id", sellerHandler_1.getSellerIdHandler);
+sellerRouter.put("/:id", sellerHandler_1.updateSellerHandler);
+sellerRouter.post("/", sellerHandler_1.createSellerHandler);
+sellerRouter.delete("/:id", sellerHandler_1.deleteSellerHandler);
+exports.default = sellerRouter;
