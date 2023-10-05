@@ -47,7 +47,7 @@ export interface ISeller {
   municipioId: number;
 }
 
-export interface Negocio {
+export interface INegocio {
   id?: number;
   idProductor: number;
   nombreNegocio: string;
